@@ -1,0 +1,444 @@
+
+body {
+    background-image: url('../img/bg.jpg');
+    font-family: 'Open Sans', sans-serif;
+}
+
+.jumbotron {
+    margin-top: 15px;
+}
+
+.item-container {
+    min-height: 600px;
+    background-color: #f8f8f8;
+    margin-top: -20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .75);
+    padding-bottom: 50px;
+}
+
+.footer-container {
+    background-color: rgb(248, 248, 248);
+    min-height: 130px;
+    border-top: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .75);
+    padding-bottom: 10px;
+    margin-top: 3px;
+}
+
+.ad-in-list {
+    height: 110px;
+}
+
+.button-link, .button-link:hover {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white /* Цвет ссылки при наведении на нее курсора мыши */
+}
+
+.options:hover {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: chocolate /* Цвет ссылки при наведении на нее курсора мыши */
+}
+
+.icon-profile {
+    color: #adadad;
+    width: 15px;
+    height: 15px;
+    margin-right: 17px;
+}
+
+.link, .link:hover {
+    color: #f08a24;
+    text-decoration: none;
+    border-bottom: 1px orange dashed;
+}
+
+.link:hover {
+    border-bottom: 1px solid;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.vertical-center {
+    vertical-align: middle;
+}
+
+.height-inherit {
+    height: inherit;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-brand {
+        display: none;
+    }
+}
+
+.fieldset {
+    background-color: #f7f7f7;
+}
+
+.registration-add {
+    margin-top: 130px;
+    font-size: larger;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+.padding-top15 {
+    padding-top: 15px;
+}
+.margin-top40 {
+    margin-top: 40px;
+}
+
+.margin-top15 {
+    margin-top: 15px;
+}
+
+.margin-top8 {
+    margin-top: 8px;
+}
+
+.margin-top30 {
+    margin-top: 30px;
+}
+
+.margin-left {
+    margin-left: 20px;
+}
+
+.margin-left50 {
+    margin-left: 50px;
+}
+
+.margin-left80 {
+    margin-left: 80px;
+}
+
+.padding0 {
+    padding: 0;
+}
+
+.block_margined {
+    display: block;
+    margin: 10px 0;
+
+}
+
+.text_small {
+    font-size: small;
+}
+
+.text_left {
+    text-align: left !important;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 0px
+    }
+
+}
+
+textarea {
+    resize: none;
+}
+
+.em1_1 {
+    font-size: 1.1em !important;
+}
+
+.em1_5 {
+    font-size: 1.5em !important;
+}
+
+.em1_8 {
+    font-size: 1.8em !important;
+}
+
+.price_tag {
+    color: #5cb85c;
+}
+
+.float-left {
+    float: left;
+}
+
+.img-logo {
+    width: 100px;
+    height: 99px;
+    background: url("../img/logo2.png") no-repeat;
+    margin: 0 auto;
+}
+
+.btn-add-report {
+    background-color: #ef7925;
+    font-size: medium;
+    border-color: #ef7945;
+    text-transform: uppercase;
+}
+
+.margin-right20 {
+    margin-right: 20px;
+}
+
+.img-result {
+    max-height: 150px;
+    min-height: 100px;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    bottom: -50%;
+    right: -50%;
+    margin: auto;
+
+}
+
+.item-img-in-list {
+    background-color: #eeeeee;
+    width: 100%;
+    height: 95%;
+    line-height: inherit;
+    position: relative;
+}
+
+.img-main-item {
+    width: 80%;
+}
+
+.main-item {
+    width: 90%;
+    float: left;
+
+}
+
+.img-add-item {
+    width: 60%;
+
+}
+
+.add-item {
+    width: 90%;
+    float: left;
+}
+
+.cell-result {
+    height: 175px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    border: 1px solid #eeeeee;
+}
+
+.new_item_heading {
+    font-size: medium;
+    color: #8c8c8c;
+    padding-top: 5px;
+}
+.message_heading {
+    font-size: large;
+    font-weight: bold;
+    color: #8c8c8c;
+    padding-top: 5px;
+}
+
+nav .footer-header-color {
+    box-shadow: 0 0 8px rgba(0, 0, 0, .75);
+}
+
+.footer-header-color {
+    background-color: #ededed;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .75);
+}
+
+.contactForm-item {
+    background-color: #f1f5fc;
+    border-radius: 5px;
+    border: 1px solid #8bc9e3;
+}
+
+input[type=text] {
+    border-radius: 5px;
+}
+
+.underline {
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(191, 187, 178, 0.3);
+}
+
+.height100 {
+    height: 100px;
+    overflow: hidden;
+}
+
+.img-profile-list {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.no-link-effect:hover {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #fff; /* Цвет ссылки при наведении на нее курсора мыши */
+    background: #554f9f; /* Цвет фона */
+}
+.no-link,.no-link:hover {
+
+    text-decoration: none; /* Убираем подчеркивание */
+
+}
+
+.icons a {
+    text-decoration: none;
+    color: #9d9d9d;
+}
+
+.icons a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+.orange {
+    color: #ef7925;
+}
+
+.red {
+    color: red;
+}
+
+.grey {
+    color: grey;
+}
+
+.blue {
+    color: #554f9f;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+lead i:hover {
+    font-size: 220%;
+}
+
+/* Space out content a bit */
+/*body {*/
+/*padding-top: 20px;*/
+/*padding-bottom: 20px;*/
+/*}*/
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+/*.header,*/
+/*.marketing,*/
+/*.footer {*/
+/*padding-right: 15px;*/
+/*padding-left: 15px;*/
+/*}*/
+
+/*!* Custom page header *!*/
+/*.header {*/
+/*padding-bottom: 20px;*/
+/*border-bottom: 1px solid #e5e5e5;*/
+/*}*/
+/*!* Make the masthead heading the same height as the navigation *!*/
+/*.header h3 {*/
+/*margin-top: 0;*/
+/*margin-bottom: 0;*/
+/*line-height: 40px;*/
+/*}*/
+
+/*!* Custom page footer *!*/
+/*.footer {*/
+/*padding-top: 19px;*/
+/*color: #777;*/
+/*border-top: 1px solid #e5e5e5;*/
+/*}*/
+
+/*!* Main marketing message and sign up button *!*/
+/*.jumbotron {*/
+/*text-align: center;*/
+/*border-bottom: 1px solid #e5e5e5;*/
+/*}*/
+/*.jumbotron .btn {*/
+/*padding: 14px 24px;*/
+/*font-size: 21px;*/
+/*}*/
+
+/*!* Supporting marketing content *!*/
+/*.marketing {*/
+/*margin: 40px 0;*/
+/*}*/
+/*.marketing p + h4 {*/
+/*margin-top: 28px;*/
+/*}*/
+
+/*!* Responsive: Portrait tablets and up *!*/
+/*@media screen and (min-width: 768px) {*/
+/*!* Remove the padding we set earlier *!*/
+/*.header,*/
+/*.marketing,*/
+/*.footer {*/
+/*padding-right: 0;*/
+/*padding-left: 0;*/
+/*}*/
+/*!* Space out the masthead *!*/
+/*.header {*/
+/*margin-bottom: 30px;*/
+/*}*/
+/*!* Remove the bottom border on the jumbotron for visual effect *!*/
+/*.jumbotron {*/
+/*border-bottom: 0;*/
+/*}*/
+/*}*/
+#img-container {
+    margin-top: 30px;
+    min-width: 200px;
+    min-height: 300px;
+    border: 2px solid steelblue;
+}
+
+.highlighted {
+    border: 4px solid gold !important;
+}
+
+#img-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#img-list li {
+    margin: 10px;
+    /*float: left;*/
+    width: 154px;
+    /*height: 90px;*/
+    text-align: center;
+    /*border: 1px solid #888888;*/
+    display: inline-block;
+
+}
+
+#img-list div.progress {
+    width: 150px;
+    border: 1px solid #888888;
+    height: 18px;
+    text-align: center;
+    background-image: url('../img/pbar_bgr.png');
+    background-repeat: no-repeat;
+    background-position: -150px center;
+}

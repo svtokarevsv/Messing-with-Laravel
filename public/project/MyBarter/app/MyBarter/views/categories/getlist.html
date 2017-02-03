@@ -1,0 +1,155 @@
+<div class="jumbotron">
+    <div class="container ">
+        <form class="form-inline" method="">
+            <div class="row">
+                <label class="control-label col-sm-1" for="list-search">Что ищем?</label>
+
+                <div class="form-group input-group col-sm-4">
+                    <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" id="list-search" placeholder="Поиск..." name="search">
+                </div>
+
+                <div class="form-group input-group col-sm-3">
+
+                    <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" list="country_list" placeholder="Регион..." name="region">
+                    <datalist id="country_list">
+                        <?php 
+                        foreach ($data['regions'] as $region_data) { ?>
+                            <option><?= $region_data['region'] ?></option>
+                        <?php } ?>
+                        <!--                        <option value="Киев">Киевская область</option>-->
+                        <!--                        <option value="Полтава">Полтавская область</option>-->
+                        <!--                        <option value="Чернигов">Черниговская область</option>-->
+                        <!--                        <option value="Одесса"-->
+                        <!--                        ">Одесская область</option>-->
+                        <!-- и остальные -->
+                    </datalist>
+
+                </div>
+
+                <div class="form-group input-group col-sm-3">
+                    <span class="input-group-addon"><i class="fa fa-list-alt" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control " list="category_list" placeholder="Категория..."
+                           name="category">
+                    <datalist id="category_list">
+                        <?php foreach ($data['categories'] as $category_data) {
+                            if ($category_data['parent_id'] == 0) {
+                                $category_data['name'] = mb_strtoupper($category_data['name']);
+                                echo "<option>{$category_data['name']}";
+                                foreach ($data['categories'] as $category_data2) {
+                                    if ($category_data2['parent_id'] == $category_data['id']) {
+                                        echo "<option>{$category_data2['name']}";
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                        <!-- и остальные -->
+                    </datalist>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="description_search"> Искать в названии и описании
+                        </label>
+                    </div>
+                    <div class="checkbox col-md-offset-1">
+                        <label>
+                            <input type="checkbox" name="photo_search"> Только с фотографиями
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="Цена от (грн)..." name="price_from">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="Цена до (грн)..." name="price_to">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="left">
+                        <button type="submit" class="btn btn-lg btn-info" role="button"><i
+                                class="fa fa-search em1_5" aria-hidden="true"> Найти!</i></button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+        </form>
+        <div class="row">
+            <div>
+                <div class="col-sm-8 col-sm-offset-4">
+                    <div class="col-sm-2"><span class="grey">Сортировка: </span></div>
+                    <div class="col-sm-9 col-sm-offset-1">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="<?= preg_replace(array("/&sort=new/", "/&sort=asc/", "/&sort=desc/"), '', $_SERVER['REQUEST_URI']) ?>&sort=new">Самые
+                                    новые</a></li>
+                            <li>
+                                <a href="<?= preg_replace(array("/&sort=new/", "/&sort=asc/", "/&sort=desc/"), '', $_SERVER['REQUEST_URI']); ?>&sort=asc">Самые
+                                    дешевые</a></li>
+                            <li>
+                                <a href="<?= preg_replace(array("/&sort=new/", "/&sort=asc/", "/&sort=desc/"), '', $_SERVER['REQUEST_URI']); ?>&sort=desc">Самые
+                                    дорогие</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="col-sm-12 block_margined">
+    <div class="row">
+        <div>
+            <div class="col-sm-8 col-sm-offset-1">
+                <div class="col-sm-3"><span class="grey">Результат по категориям: </span></div>
+                <div class="col-sm-8 col-sm-offset-1">
+                    <ul class="list-inline">
+                        <li><a>Электроника</a></li>
+                        <li><a>Транспорт</a></li>
+                        <li><a>Одежда</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="col-sm-12">
+    <?php foreach ($data['ads'] as $ads_data) { ?>
+        <div class="row">
+            <div class="cell-result">
+
+                <div class="col-xs-3 height-inherit">
+                    <div class="item-img-in-list">
+                        <img src="<?= PRELINK ?><?= $ads_data['img'] ? $ads_data['img'] : "uploads/no_photo.jpeg" ?>"
+                            class="img-result img-thumbnail vertical-center center-block">
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="ad-in-list">
+                        <div class="col-xs-9 padding0"><h3><a href="<?=PRELINK?>categories/show/<?=self::NormalizeStringToLatin($ads_data['title']).'-'.$ads_data['id'] ?>" target="_blank"><?= $ads_data['title'] ?></a></h3></div>
+                        <div class="col-xs-3 margin-top15"><h4><?= $ads_data['price'] ?> грн</h4></div>
+                        <div class="clearfix"></div>
+                        <p class="grey"><?= $ads_data['parent'] ?> &raquo; <?= $ads_data['name'] ?></p></div>
+                    <p><?= $ads_data['region'] ?></p>
+                    <p class="grey">Опубликовано в <?=date("H:i d-m-Y",strtotime($ads_data['date']))  ?></p>
+
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <nav class="text-center"><?php empty($ads_data)? print "<h2>По вашему запросу нет объявлений</h2>" :$data['pagination']->showPagination();?></nav>
+</div>
+
+

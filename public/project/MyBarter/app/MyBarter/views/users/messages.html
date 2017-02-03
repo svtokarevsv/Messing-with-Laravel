@@ -1,0 +1,95 @@
+<div class="col-sm-12 ">
+    <h4>Ваши сообщения</h4>
+    <small class="grey">Тут вы сможете посмотреть, кто Вам писал</small>
+</div>
+<div class="col-sm-12  margin-top15 ">
+
+    <ul class="nav nav-tabs">
+        <li><a href="<?=PRELINK ?>users/current">Объявления</a></li>
+        <li class="active"><a >Сообщения</a></li>
+        <li><a href="<?=PRELINK ?>users/options" >Настройки профиля</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="messages">
+            <div class="col-xs-12 well">
+                <div class="col-xs-12">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a href="#tab-in-1" data-toggle="tab">Входящие</a></li>
+                        <li><a href="#tab-in-2" data-toggle="tab">Отправленные</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-in-1">
+                            <div class="col-xs-12 ">
+                                <h4 class="grey">Входящие сообщения</h4>
+                                <table width="100%">
+                                    <div class="margin-top15"></div>
+                                    <tr class="underline">
+                                        <th class="col-xs-2">От кого </th>
+                                        <th  class="col-xs-3">Кому </th>
+                                        <th class="col-xs-5 ">Описание </th>
+                                        <th class="col-xs-2">Дата </th>
+                                    </tr>
+                                    <?php foreach ($data['messages'] as $message) {
+                                        if ($message['is_active']==1 and $message['to_id']==MyBarter\lib\Session::get('id') ){?>
+
+                                            <tr class="underline height100">
+
+                                                <td class="col-xs-2"><?=$message['from_name'] ?></td>
+                                                <td class="col-xs-3"><strong>Вы</strong></td>
+                                                <td class="col-xs-5 "><a href="<?=PRELINK ?>messages/view/<?=$message['mess_id']?>" class="no-link">
+                                                    <p><strong><?=$message['title'] ?></strong></p>
+                                                    <small><?=substr($message['message'], 0, 30) ?></small>
+                                                    </a></td>
+                                                <td class="col-xs-2"><?=$message['date'] ?></td>
+                                            </tr>
+
+
+                                        <?php } } ?>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-in-2">
+                            <div class="col-xs-12 ">
+                                <h4 class="grey">Отправленные сообщения</h4>
+                                <table width="100%">
+                                    <div class="margin-top15"></div>
+                                    <tr class="underline">
+                                        <th class="col-xs-2">От кого </th>
+                                        <th  class="col-xs-3">Кому </th>
+                                        <th class="col-xs-5 ">Описание </th>
+                                        <th class="col-xs-2">Дата </th>
+                                    </tr>
+                                    <?php foreach ($data['messages'] as $message) {
+                                        if ($message['is_active']==1 and $message['from_id']==MyBarter\lib\Session::get('id') ){?>
+
+                                            <tr class="underline height100">
+
+                                                <td class="col-xs-2"><strong>Вы</strong></td>
+                                                <td class="col-xs-3"><?=$message['to_name'] ?></td>
+                                                <td class="col-xs-5 "><a href="<?=PRELINK ?>messages/view/<?=$message['mess_id']?>" class="no-link">
+                                                        <p><strong><?=$message['title'] ?></strong></p>
+                                                        <small><?=substr($message['message'], 0, 30) ?></small>
+                                                    </a></td>
+                                                <td class="col-xs-2"><?=$message['date'] ?></td>
+                                            </tr>
+
+                                        <?php } } ?>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!--    <div class="tab-content">
+        <div class="tab-pane active" id="messages">
+            <div class="col-xs-12 well"><p> текст2</p></div>
+        </div>
+
+    </div>-->
+
+</div>

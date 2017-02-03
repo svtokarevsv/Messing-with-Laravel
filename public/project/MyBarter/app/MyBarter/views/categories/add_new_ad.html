@@ -1,0 +1,147 @@
+<h1 class="em1_5">&nbsp;&nbsp;&nbsp; Подать бесплатное объявление на MyBarter.UA</h1>
+<hr>
+<div class="col-sm-8 col-sm-offset-2 ">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+<fieldset>
+        <br/>
+        <div class="form-group">
+            <label for="category" class="col-sm-4 new_item_heading">Заголовок</label>
+            <div class="col-sm-8 ">
+                <input type="text" class="form-control " name="title" placeholder="Введите название..." required>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-4 new_item_heading">Категория</label>
+            <div class="col-sm-8">
+                <!--                <input type="text" class="form-control " name="category" list="category_list" id="category"-->
+                <!--                       placeholder="Категория..." required>-->
+                <select class="form-control " name="category" required>
+                    <?php foreach ($data['categories'] as $category_data) {
+                        if ($category_data['parent_id'] == 0) {
+                            $category_data['name'] = mb_strtoupper($category_data['name']);
+                            echo "<option value='{$category_data['id']}' disabled>{$category_data['name']}";
+                            foreach ($data['categories'] as $category_data2) {
+                                if ($category_data2['parent_id'] == $category_data['id']) {
+                                    echo "<option value='{$category_data2['id']}'>{$category_data2['name']}";
+                                }
+                            }
+                        }
+                    }
+                    ?>
+                    <!-- и остальные -->
+                </select>
+            </div>
+        </div>
+        <hr>
+        <br/>
+        <div class="form-group">
+            <label for="category" class="col-sm-4 new_item_heading">Описание</label>
+            <div class="col-sm-8 ">
+                <textarea rows="15" name="description" class="form-control" placeholder="Введите описание..."
+                          required></textarea>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-4 new_item_heading">Цена, грн</label>
+            <div class="col-sm-8 ">
+                <input type="text" class="form-control " name="price" placeholder="Введите стоимость..." required>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-4 new_item_heading">Фотографии</label>
+            <div class="col-sm-8 ">
+                <p>Выберите основную картинку и дополнительные картинки для вашего объявления<br/>
+                    <em class="text_small">(Первый файл будет заглавной картинкой.)</em></p>
+                <input type="file" name="files[0]" >
+                <br/>
+                <p><em class="text_small">(Выберите 1-2 дополнительные картинки)</em></p>
+                <input type="file" name="files[1]" >
+                <input type="file" name="files[2]" >
+                <!-- <div id="img-container">-->
+                <!--id="file-field"-->
+                <!--                    <ul id="img-list"></ul>-->
+            </div>
+
+
+        <hr>
+        <br/>
+</div>
+<div class="form-group margin-top40">
+    <label for="region" class="col-sm-4 new_item_heading">Регион</label>
+
+    <div class="col-sm-8 input-group">
+        <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+        <select class="form-control" id="region" name='region' required>
+            <?php foreach ($data['regions'] as $region_data) { ?>
+                <option value="<?= $region_data['id'] ?>"><?= $region_data['region'] ?></option>
+            <?php } ?>
+            <!--                        <option value="Киев">Киевская область</option>-->
+            <!--                        <option value="Полтава">Полтавская область</option>-->
+            <!--                        <option value="Чернигов">Черниговская область</option>-->
+            <!--                        <option value="Одесса"-->
+            <!--                        ">Одесская область</option>-->
+            <!-- и остальные -->
+        </select>
+    </div>
+</div>
+<hr>
+<br/>
+<div class="form-group">
+    <label for="client_name" class="col-sm-4 new_item_heading">Ваше имя</label>
+    <div class="col-sm-8  input-group">
+        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+        <input type="text" class="form-control " name="name" placeholder="Введите Ваше имя..." id="client_name"
+               value="<?= $data['user'][0]['name'] ?>" disabled>
+
+    </div>
+</div>
+<div class="form-group">
+    <label for="phone" class="col-sm-4 new_item_heading">Телефон</label>
+    <div class="col-sm-8  input-group">
+        <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+        <input type="text" class="form-control " placeholder="Номер телефона..."
+               id="phone" <?php if (isset($data['user'][0]['phone'])) {
+            echo "value=\"{$data['user'][0]['phone']}\" ";
+        } else {
+            echo "Введите ваш телефон в настройках аккаунта";
+        }; ?> disabled>
+
+    </div>
+</div>
+<div class="form-group">
+    <label for="Email" class="col-sm-4 new_item_heading">Ваш Email</label>
+    <div class="col-sm-8  input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+        <input type="email" class="form-control" id="Email" placeholder="Email..."
+               value="<?= $data['user'][0]['email'] ?>" disabled>
+    </div>
+</div>
+<h3 class="em1_5">&nbsp;&nbsp;&nbsp; Согласие на обработку данных</h3>
+<hr>
+<div class="checkbox">
+    <div class="col-xs-8 col-xs-offset-4">
+
+        <input type="checkbox" required>
+        <p>Я соглашаюсь с <a data-toggle="modal" data-target="#rules">правилами</a> использования сервиса, а также с
+            передачей и
+            обработкой моих данных в MyBarter.ua. Я подтверждаю своё совершеннолетие и ответственность за
+            размещение объявления</p>
+    </div>
+
+</div>
+<br/>
+<hr>
+<hr>
+<br/>
+<div class="col-xs-8 col-xs-offset-4">
+    <button type="submit" class="btn btn-success btn-lg">Опубликовать объявление</button>
+</div>
+<br/>
+<br/>
+<br/>
+</fieldset>
+</form>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-xs-4 col-xs-offset-1 margin-top40">
+
+    <form method="post" action="">
+        <fieldset class="fieldset">
+            <h2>Создать учетную запись</h2>
+
+            <input type="text" name="name" class="form-control" placeholder="Ваше имя" required=""
+                   autofocus="" value="<?=isset($_POST['name'])?htmlspecialchars($_POST['name']):null; ?>">
+            <small class="grey margin-left">Введите ваше имя</small>
+            <input type="email" name="email" class="form-control" placeholder="Email-адрес" required="" value="<?=isset($_POST['email'])?htmlspecialchars($_POST['email']):null; ?>">
+            <small class="grey margin-left">Введите ваш Email-адрес</small>
+            <input type="password" name="password" class="form-control" placeholder="Пароль" required="">
+            <small class="grey margin-left">Введите ваш пароль</small>
+            <input type="password" name="passwordConfirm" class="form-control" placeholder="Повторите пароль"
+                   required="">
+            <small class="grey margin-left">Повторите ввод пароля</small>
+            <div class="checkbox col-xs-12">
+                <input type="checkbox" id="rulesagree" required="" >
+                <label for="rulesagree">Я соглашаюсь с <a data-toggle="modal" data-target="#rules">правилами</a> использования сервиса,
+                    а также с передачей и обработкой моих данных в MyBarter.ua. </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрировать</button>
+        </fieldset>
+    </form>
+
+</div>
+<div class="col-xs-5 col-xs-offset-1 registration-add">
+    <p>Личный кабинет позволит вам:</p>
+    <p><small><i class="fa fa-thumbs-o-up" aria-hidden="true">&nbsp;&nbsp;</i>создавать, удалять и обновлять объявления</small></p>
+    <p><small><i class="fa fa-thumbs-o-up" aria-hidden="true">&nbsp;&nbsp;</i>просматривать сообщения</small></p>
+    <p><small><i class="fa fa-thumbs-o-up" aria-hidden="true">&nbsp;&nbsp;</i>другие плюшки</small></p>
+    <p>Введите ваш email-адрес, желаемый пароль и подтвердите изменения, пройдя по ссылке в письме, которое мы вам отправим.</p>
+</div>

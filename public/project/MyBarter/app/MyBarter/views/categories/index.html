@@ -1,0 +1,54 @@
+
+<div class="jumbotron">
+    <div class="container ">
+        <div class="img-logo"></div>
+        <h2 class="text-center">Здесь можно найти что-угодно! </h2>
+        <form class="center" role="search" action="<?= PRELINK ?>categories/getlist/" method="get" >
+            <div class="form-group-lg input-group">
+                <span class="input-group-addon"><i class="fa fa-search fa-2x" aria-hidden="true"></i></span>
+                <input type="text" class="form-control search" name="search" placeholder="Поиск...">
+            </div>
+            <div class="form-group-lg input-group-lg center">
+                <br/>
+                <div class="center">
+                    <button type="submit" class="btn btn-lg btn-success center" role="button">Найти!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br/>
+</div>
+<div class="row marketing center-block">
+    <div class="col-sm-3">
+        <h4><a  href="<?=PRELINK ?>categories/getlist/?category=Транспорт" class="red"><i class="fa fa-car fa-2x" aria-hidden="true" id="car"></i><label for="car"><span class="margin-left">Транспорт</span></label></a></h4>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Автомобили" ><i class="fa fa-truck fa-2x" aria-hidden="true" ></i><span class="margin-left">Автомобили</span></a></p>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Мотоциклы"><i class="fa fa-motorcycle fa-2x" aria-hidden="true" ></i><span class="margin-left">Мотоциклы</span></a></p>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Запчасти"><i class="fa fa-wrench fa-2x" aria-hidden="true"></i><span class="margin-left">Запчасти</span></a></p>
+    </div>
+
+    <div class="col-sm-3">
+        <h4 ><a href="<?=PRELINK ?>categories/getlist/?category=Недвижимость" class="green"><i class="fa fa-building fa-2x" aria-hidden="true" id="estate"></i><label for="estate"><span class="margin-left">Недвижимость</span></label></a></h4>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Купля-продажа"><i class="fa fa-home fa-2x" aria-hidden="true" "></i><span class="margin-left">Купля\продажа</span></a></p>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Аренда"><i class="fa fa-hotel fa-2x" aria-hidden="true"></i><span class="margin-left">Аренда</span></a></p>
+    </div>
+    <div class="col-sm-3">
+        <h4><a href="<?=PRELINK ?>categories/getlist/?category=Электроника" class="yellow"><i class="fa fa-desktop fa-2x" aria-hidden="true" id="electronics"></i><label for="electronics"><span class="margin-left">Электроника</span></label></a></h4>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Компьютеры"><i class="fa fa-laptop fa-2x" aria-hidden="true" ></i><span class="margin-left">Компьютеры</span></a></p>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Комплектующие ПК"><i class="fa fa-gears fa-2x" aria-hidden="true" ></i><span class="margin-left">Комплектующие ПК</span></a></p>
+        <p class="block_margined" style="margin-left: 18px;"><a href="<?=PRELINK ?>categories/getlist/?category=Гаджеты"><i class="fa fa-mobile-phone fa-2x" aria-hidden="true" ></i><span class="margin-left">Гаджеты</span></a></p>
+        <p class="block_margined"><a href="<?=PRELINK ?>categories/getlist/?category=Бытовая электроника"><i class="fa fa-video-camera fa-2x" aria-hidden="true" ></i><span class="margin-left">Бытовая электроника</span></a></p>
+    </div>
+    <div class="col-sm-3">
+        <h4><a href="<?=PRELINK ?>categories/getlist/?category=Одежда" class="blue"><i class="fa fa-black-tie fa-2x" aria-hidden="true" id="cloth"></i><label for="cloth"><span class="margin-left">Одежда</span></label></a></h4>
+        <p class="block_margined" style="margin-left: 3px;"><a href="<?=PRELINK ?>categories/getlist/?category=Мужская"><i class="fa fa-male fa-2x" aria-hidden="true"></i><span class="margin-left">Мужская</span></a></p>
+        <p class="block_margined "><a href="<?=PRELINK ?>categories/getlist/?category=Женская"><i class="fa fa-female fa-2x" aria-hidden="true" ></i><span class="margin-left">Женская</span></a></p>
+        <p class="block_margined "><a href="<?=PRELINK ?>categories/getlist/?category=Детская"><i class="fa fa-child fa-2x" aria-hidden="true"></i><span class="margin-left">Детская</span></a></p>
+
+    </div>
+</div>
+<?php /*foreach ($data['pages'] as $page_data) {*/?><!--
+   <div style="margin-top: 20px">
+       <a href="<?/*=PRELINK*/?>categories/view/<?/*=$page_data['alias']*/?>"><?/*=$page_data['name']*/?></a>
+   </div>
+
+--><?php /*}*/?>

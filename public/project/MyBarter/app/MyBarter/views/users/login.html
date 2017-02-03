@@ -1,0 +1,20 @@
+<div class="col-xs-4 col-xs-offset-4">
+
+    <form method="post" action="">
+        <h2>Войдите в личный кабинет</h2>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Электронная почта" required="" autofocus="">
+        <label for="password" class="sr-only">Пароль</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Пароль..." required="">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember" value="1"> Запомнить меня
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    </form>
+    <div class="col-xs-6 margin-top15"><a>Забыли пароль?</a></div>
+    <div class="col-xs-4 col-xs-offset-1 margin-top15"><a href="<?=PRELINK ?>users/register">Регистрация</a></div>
+    <p class="small margin-top40"><em>Входя в раздел Мой профиль, вы принимаете <a data-toggle="modal" data-target="#rules">Правила</a> использования сайта</em></p>
+
+</div>

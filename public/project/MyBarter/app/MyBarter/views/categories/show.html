@@ -1,0 +1,177 @@
+<ol class="breadcrumb">
+    <li><a href="<?= PRELINK ?>">Главная</a></li>
+    <?php
+    if ($data['ad']['parent_id'] == 0) {
+        echo "<li ><a href='" . PRELINK . "categories/getlist/?category={$data['ad']['name']}'>{$data['ad']['name']}</a></li>";
+    } else {
+        echo "<li><a href='" . PRELINK . "categories/getlist/?category={$data['ad']['parent']}'>{$data['ad']['parent']}</a></li>";
+        echo "<li ><a href='" . PRELINK . "categories/getlist/?category={$data['ad']['name']}'>{$data['ad']['name']}</a></li>";
+    }
+    ?>
+    <li class="active">Текущее объявление</li>
+</ol>
+<?php if($data['ad']['is_active']==0)echo "<div class='alert alert-info'><h4>Это объявление находится в архиве</h4></div>"; ?>
+<?php if (MyBarter\lib\Session::get('role') == '2' OR MyBarter\lib\Session::get('role') == '1' OR MyBarter\lib\Session::get('id') == $data['ad']['id_user']): ?>
+    <div class="col-xs-12">
+        <h4>
+            <a href="<?= PRELINK ?>categories/edit/<?= self::NormalizeStringToLatin($data['ad']['title']) . '-' . $data['ad']['id'] ?>"><em>Перейти в режим редактирования</em></a>
+        </h4>
+        <?php if($data['ad']['is_active']==1):  ?><a href="<?=PRELINK ?>categories/archive/<?=$data['ad']['id'] ?>" onclick="return confirmArchive();" class="no-link-effect">
+                <h5 class="orange">
+                    <i class="fa fa-close" aria-hidden="true"></i><span  class="no-link-effect">&nbsp;В архив</span>
+                </h5>
+            </a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<div class="col-sm-12">
+    <div class="row">
+
+
+        <div class="col-sm-9 height-inherit">
+            <h1><?= $data['ad']['title'] ?></h1>
+            <p><strong><?= $data['ad']['region'] ?></strong> | Дата добавления: <?= $data['ad']['date'] ?></p>
+            <div class="col-xs-12 height-inherit">
+                <div class="main-item"><img
+                        src="<?= PRELINK ?><?= (!empty($data['ad']['img'])) ? $data['ad']['img'] : 'uploads/no_photo.jpeg' ?>"
+                        class=" img-thumbnail vertical-center center-block img-main-item"></div>
+            </div>
+            <?php
+            if ($data['ad']['parent_id'] == 0) {
+                ?>
+                <div class="col-xs-6">
+                    <h4 class="grey">Категория товара: <?= $data['ad']['name'] ?></h4>
+                </div>
+            <?php } else {
+                ?>
+                <div class="col-xs-6">
+                    <h4 class="grey">Категория товара: <?= $data['ad']['parent'] ?></h4>
+                </div>
+                <div class="col-xs-6">
+                    <h4 class="grey">Раздел: <?= $data['ad']['name'] ?></h4>
+                </div>
+
+            <?php } ?>
+
+
+            <p class="col-xs-12"><?= $data['ad']['text'] ?></p>
+            <div class="col-xs-12 height-inherit margin-top30">
+                <?php if (!empty($data['ad']['img_other'])) { ?>
+                    <div class="add-item">
+                        <img src="<?= PRELINK ?><?= $data['ad']['img_other'] ?>"
+                             class=" img-thumbnail vertical-center center-block img-add-item">
+                    </div>
+                <?php } ?>
+
+                <?php if (!empty($data['ad']['img_other2'])) { ?>
+                    <div class="add-item margin-top15">
+                        <img src="<?= PRELINK ?><?= $data['ad']['img_other2'] ?>"
+                             class=" img-thumbnail vertical-center center-block img-add-item">
+                    </div>
+                <?php } ?>
+
+            </div>
+
+
+            <?php if (!empty(MyBarter\lib\Session::get('id'))) { ?>
+                <div class="col-xs-12 margin-top30">
+                    <form class="contactForm-item" id="contact" method="post">
+                        <fieldset>
+
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <h3> Связаться с автором объявления</h3>
+                                <p><i class="fa fa-phone-square em1_5 green" aria-hidden="true"> </i><strong> Контактный
+                                        телефон : <span class="blue"><?= $data['ad']['phone'] ?></span></strong></p>
+                                <p><i class="fa fa-envelope em1_5 " aria-hidden="true"> </i> <strong>Email : <span
+                                            class="blue"><?= $data['ad']['email'] ?></span></strong></p>
+                                <br/>
+                                <div>
+                                    <input type="text" class="form-control" name="from_name" placeholder="Ваше имя"
+                                           value="<?= MyBarter\lib\Session::get('username') ?>" disabled><br>
+                                    <textarea name="message" class="form-control" rows="10"
+                                              placeholder="Ваше сообщение"></textarea><br>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Отправить сообщение
+                                    </button>
+                                    <br/>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            <?php } else echo "<div class=\"col-xs-10 col-xs-offset-1\"><h3 class='margin-top40 well'>Чтобы просмотреть контактные данные, необходимо <a href='" . PRELINK . "users/login'>авторизоваться</a></h3></div>"; ?>
+
+            <div class="col-sm-12 margin-top30">
+                <h3 id="otherAds">Все объявления этого автора </h3>
+
+                <?php foreach ($data['other_ads'] as $other_ad) { ?>
+                    <div class="row">
+                        <div class="cell-result">
+
+                            <div class="col-xs-3 height-inherit">
+                                <img
+                                    src="<?= PRELINK ?><?= (!empty($other_ad['img'])) ? $other_ad['img'] : 'uploads/no_photo.jpeg' ?>"
+                                    class="img-result img-thumbnail vertical-center center-block">
+                            </div>
+                            <div class="col-xs-7"><h3><a
+                                        href="<?= PRELINK ?>categories/show/<?= self::NormalizeStringToLatin($other_ad['title']) . '-' . $other_ad['id'] ?>"><?= $other_ad['title'] ?></a>
+                                </h3>
+                                <div class="clearfix"></div>
+                                <p class="grey"><?= $other_ad['parent'] ?> &raquo; <?= $other_ad['name'] ?></p>
+                                <p><?= $other_ad['region'] ?></p>
+                                <p class="grey">Дата: <?= $other_ad['date'] ?></p>
+                            </div>
+                            <div class="col-xs-2"><h4><?= $other_ad['price'] ?> грн</h4></div>
+                        </div>
+                    </div>
+
+                <?php } ?>
+
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+
+            <div style="margin-top: 5em">
+                    <span class="center-block"><i class="fa fa-tag fa-rotate-90 price_tag fa-3x float-left"
+                                                  aria-hidden="true"></i> </span>
+                <h2 class=" margin-left50"><?= $data['ad']['price'] ?> грн</h2>
+                <br/>
+                <br/>
+                <div>
+                    <a href="#contact">
+                        <div class="btn btn-primary btn-lg btn-block">
+                            <div class="pull-left" style="margin-top: -3px"><i class="fa fa-envelope-o em1_5"
+                                                                               aria-hidden="true"> </i></div>
+                            <span class="">&nbsp&nbspНаписать письмо</span>
+                        </div>
+                    </a>
+                    <div class="btn btn-primary btn-lg btn-block margin-top8">
+                        <div class="pull-left" style="margin-top: -3px"><i class="fa fa-phone em1_5"
+                                                                           aria-hidden="true"> </i></div>
+                        <span class=""><?= $data['ad']['phone'] ?></span>
+                    </div>
+
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+                <h3 class="text-left">
+                    <div class="col-xs-3"><i class="fa fa-user em1_5 orange" aria-hidden="true"> </i>&nbsp&nbsp&nbsp&nbsp
+                    </div>
+                    <div class="col-xs-9"><?= $data['ad']['userName'] ?></div>
+                </h3>
+            </div>
+
+            <p class="grey col-xs-12"> С нами с <?= date("d.m.Y", strtotime($data['ad']['registr_date'])) ?></p>
+            <div class="col-xs-12"><a href="#otherAds">Другие объявления автора</a></div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
